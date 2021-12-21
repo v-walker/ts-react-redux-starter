@@ -4,10 +4,14 @@ import TestFeature from '../features/testFeature/TestFeature';
 function TestPage() {
     return (
         <div>
-            Test Page
-            <br />
-            <br />
-            <TestFeature />
+            <div className='container'>
+                <div className='row'>
+                    
+                        <TestFeature />
+                    
+                </div>
+            </div>
+            
         </div>
     )
 }
