@@ -1,10 +1,25 @@
-import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
+import { configureStore, ThunkAction, Action, combineReducers } from '@reduxjs/toolkit';
 import counterReducer from '../features/counter/counterSlice';
+import { persistStore, persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage';
+
+// configurtion for local storage
+export const config = {
+  key: 'root',
+  storage: storage
+}
+
+const rootReducer = combineReducers({
+  counter: counterReducer
+})
+
+const persisted = persistReducer(config, rootReducer)
 
 export const store = configureStore({
-  reducer: {
-    counter: counterReducer,
-  },
+  // reducer: {
+  //   counter: counterReducer,
+  // },
+  reducer: persisted
 });
 
 export type AppDispatch = typeof store.dispatch;
@@ -15,3 +30,4 @@ export type AppThunk<ReturnType = void> = ThunkAction<
   unknown,
   Action<string>
 >;
+
