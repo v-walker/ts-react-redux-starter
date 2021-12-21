@@ -5,6 +5,7 @@ function Header() {
         <>
             <Link to="/">Home Page</Link>
             &nbsp;
+            <Link to="/test_page">Test Page</Link>
         </>
     )
 }
